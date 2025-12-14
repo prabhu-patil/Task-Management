@@ -1,7 +1,57 @@
 
 TASK MANAGEMENT 
-This is the Task Management project in this i have used spring boot and all the architectures or layers of spring boot, core java Postgres SQL in front i used html css
-These are the front end looks
+
+# Task Management Application
+
+A simple Task Management web application built using Spring Boot following a layered architecture.  
+The application allows users to create, view, and manage tasks through a web interface.
+
+---
+
+## Tech Stack
+
+- Java
+- Spring Boot
+- Spring MVC
+- Spring Data JPA
+- PostgreSQL
+- Maven
+- HTML, CSS
+- JSP (View layer)
+
+---
+
+## Project Architecture
+
+The application follows standard Spring Boot layered architecture:
+
+- **Controller Layer**  
+  Handles HTTP requests and responses.
+
+- **Service Layer**  
+  Contains business logic.
+
+- **Repository Layer**  
+  Communicates with the database using Spring Data JPA.
+
+- **Entity Layer**  
+  Represents database tables as Java objects.
+
+---
+
+## Features
+
+- User registration and login
+- Create new tasks
+- View all tasks
+- Task data stored in PostgreSQL
+- Clean separation of concerns using MVC pattern
+
+---
+
+## Project Structure
+
+
 
 <img width="1002" height="815" alt="Screenshot 2025-12-14 235245" src="https://github.com/user-attachments/assets/1dae8c6e-becd-46f5-b493-b1ce9d8f9ec0" />
 
