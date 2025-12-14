@@ -1,6 +1,4 @@
 
-TASK MANAGEMENT 
-
 # Task Management Application
 
 A simple Task Management web application built using Spring Boot following a layered architecture.  
