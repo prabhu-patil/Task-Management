@@ -106,6 +106,66 @@
                 padding: 20px;
             }
         }
+		
+		.actions a {
+		    margin-right: 10px;
+		    color: var(--accent);
+		    cursor: pointer;
+		    text-decoration: none;
+		    font-weight: bold;
+		}
+
+		.actions a.delete {
+		    color: #f87171;
+		}
+
+		.modal {
+		    position: fixed;
+		    inset: 0;
+		    background: rgba(0,0,0,0.6);
+		    display: none;
+		    align-items: center;
+		    justify-content: center;
+		}
+
+		.modal-content {
+		    background: var(--card);
+		    padding: 22px;
+		    border-radius: 12px;
+		    width: 300px;
+		}
+
+		.modal-content h3 {
+		    margin-top: 0;
+		    text-align: center;
+		}
+
+		.modal-content input {
+		    width: 100%;
+		    padding: 8px;
+		    margin: 8px 0;
+		    border-radius: 6px;
+		    border: none;
+		}
+
+		.modal-content button {
+		    width: 100%;
+		    padding: 10px;
+		    background: var(--accent);
+		    border: none;
+		    color: #000;
+		    font-weight: bold;
+		    border-radius: 6px;
+		    cursor: pointer;
+		}
+
+		.close {
+		    text-align: right;
+		    cursor: pointer;
+		    color: var(--muted);
+		    font-size: 14px;
+		}
+
     </style>
 </head>
 <body>
@@ -119,39 +179,85 @@
 
     <table>
         <thead>
-            <tr>
+            <tr>		
+				<th>Actions</th>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Duration (hrs)</th>
             </tr>
         </thead>
-        <tbody>
-        <%
-            if (list != null && !list.isEmpty()) {
-                for (Task t : list) {
-        %>
-            <tr>
-                <td><%= t.getId() %></td>
-                <td><%= t.getName() %></td>
-                <td><%= t.getDuration() %></td>
-            </tr>
-        <%
-                }
-            } else {
-        %>
-            <tr>
-                <td colspan="3" class="empty">No tasks found</td>
-            </tr>
-        <%
-            }
-        %>
-        </tbody>
+		<tbody>
+		<%
+		    if (list != null && !list.isEmpty()) {
+		        for (Task t : list) {
+		%>
+		        <tr>
+		            <td class="actions">
+		                <a onclick="openModal('<%= t.getId() %>',
+		                                      '<%= t.getName() %>',
+		                                      '<%= t.getDuration() %>')">
+		                    Update
+		                </a>
+		                <a class="delete"
+		                   href="deleteTask?id=<%= t.getId() %>"
+		                   onclick="return confirm('Delete this task?')">
+		                    Delete
+		                </a>
+		            </td>
+		            <td><%= t.getId() %></td>
+		            <td><%= t.getName() %></td>
+		            <td><%= t.getDuration() %></td>
+		        </tr>
+		<%
+		        }
+		    } else {
+		%>
+		        <tr>
+		            <td colspan="4" class="empty">No tasks found</td>
+		        </tr>
+		<%
+		    }
+		%>
+		</tbody>
+
     </table>
 
     <div class="back">
         <a href="${pageContext.request.contextPath}/backToHome">Back to Home</a>
     </div>
 </div>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <div class="close" onclick="closeModal()">✕</div>
+
+        <h3>Edit Task</h3>
+
+		<form action="${pageContext.request.contextPath}/updateTask" method="post">
+
+            <input type="hidden" name="id" id="taskId">
+
+            <input type="text" name="name" id="taskName" required>
+            <input type="text" name="duration" id="taskDuration" required>
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openModal(id, name, duration) {
+        document.getElementById("taskId").value = id;
+        document.getElementById("taskName").value = name;
+        document.getElementById("taskDuration").value = duration;
+        document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+</script>
+
 
 </body>
 </html>

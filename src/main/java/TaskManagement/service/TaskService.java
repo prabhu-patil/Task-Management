@@ -12,4 +12,11 @@ public interface TaskService {
 	Task saveTask(Task task);
 
 	List<Task> getAllTasks();
+	
+	Task getTaskById(Integer id);
+	
+	void deleteTaskById(Integer id);
+
+	
+	
 }

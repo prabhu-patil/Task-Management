@@ -23,5 +23,15 @@ public class TaskServiceImpl implements TaskService {
 	public List<Task> getAllTasks() {
 		return repository.findAll();
 	}
+	
+	@Override
+	public Task getTaskById(Integer id) {
+		return repository.findById(id).orElse(null);
+	}
+
+	@Override
+	public void deleteTaskById(Integer id) {
+		repository.deleteById(id);
+	}
 
 }
