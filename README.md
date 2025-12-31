@@ -63,4 +63,5 @@ The application follows standard Spring Boot layered architecture:
 <img width="812" height="678" alt="Screenshot 2025-12-14 235436" src="https://github.com/user-attachments/assets/efbb2b3c-e526-4907-a196-f70b05c4b042" />
 
 
-<img width="1557" height="692" alt="Screenshot 2025-12-14 235625" src="https://github.com/user-attachments/assets/1d04c201-8699-4215-b66e-c42b5829d8d9" />
+<img width="1614" height="633" alt="Screenshot 2025-12-31 113009" src="https://github.com/user-attachments/assets/e2e1d817-78f4-4439-b9fb-b674b6aebcaf" />
+
